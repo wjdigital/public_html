@@ -4,6 +4,13 @@ body {
     background-color: #1c1c1c;
     color: #ffffff;
 }
+
+.artigo a {
+        color: #7df7a8; /* Define a cor dos links */
+        text-decoration: none; /* Remove o sublinhado dos links */
+    }
+    
+}
 .header {
     background-color: #1c1c1c;
     padding: 20px;
