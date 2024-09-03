@@ -174,3 +174,18 @@ body {
 }
 
 
+.table-container {
+    max-height: 400px; /* Altura máxima desejada para o contêiner */
+    overflow-y: auto;  /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+}
+
+table {
+    width: 100%;       /* Faz a tabela ocupar a largura total do contêiner */
+    border-collapse: collapse; /* Colapsa as bordas da tabela para um visual mais limpo */
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd; /* Adiciona uma borda à tabela */
+}
