@@ -177,6 +177,7 @@ body {
 .table-container {
     max-height: 400px; /* Altura máxima desejada para o contêiner */
     overflow-y: auto;  /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+    overflow-x: auto;  /* Adiciona a barra de rolagem horizontal, se necessário */
 }
 
 table {
