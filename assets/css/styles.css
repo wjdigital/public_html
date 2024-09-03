@@ -16,6 +16,10 @@ body {
     border-bottom: 2px solid #7df7a8;
     box-sizing: border-box;
 }
+.artigo a {
+    color: #7df7a8;
+    text-decoration: none;
+}
 .header img {
     height: 50px;
 }
