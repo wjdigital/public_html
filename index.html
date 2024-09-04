@@ -62,6 +62,125 @@
 }
 </script>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.custom-carousel-container {
+    display: block;
+    max-width: 100%; /* Largura total do contêiner */
+    overflow: hidden; /* Esconde o conteúdo extra ao inicializar */
+    text-align: center; /* Garante que os elementos dentro sejam centralizados */
+}
+
+.custom-carousel {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colunas no PC */
+    grid-gap: 10px;
+    max-height: 390px; /* Inicialmente exibe 2 linhas no desktop (195px x 2) */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    margin: 0 auto; /* Centraliza o carrossel */
+}
+
+.custom-carousel.expanded {
+    max-height: none; /* Permite a expansão completa sem limite de altura */
+}
+
+.custom-carousel-item {
+    position: relative;
+    width: 100%; /* Cada item ocupa 100% da coluna */
+    height: 195px; /* Altura máxima de cada imagem */
+    overflow: hidden;
+    border-radius: 15px; /* Cantos arredondados */
+}
+
+.custom-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    border-radius: 15px; /* Aplica cantos arredondados também às imagens */
+}
+
+.custom-carousel-item:hover img {
+    filter: blur(5px); /* Desfoque ao passar o mouse */
+    transform: scale(1.1); /* Leve aumento de zoom */
+}
+
+.custom-carousel-item:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor preta transparente sobreposta */
+}
+
+.custom-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: #7df7a8;
+    color: #000000;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px; /* Cantos arredondados no botão "Jogar" */
+    cursor: pointer;
+    z-index: 2;
+}
+
+.custom-carousel-item:hover .custom-play-button {
+    display: block; /* Botão "Jogar" aparece ao passar o mouse */
+}
+
+#custom-show-more, #view-more-games {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #7df7a8;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px; /* Cantos arredondados no botão "Ver Mais" e "Ver Mais Jogos" */
+    text-decoration: none; /* Remove o sublinhado no link "Ver Mais Jogos" */
+}
+
+#custom-show-more:hover, #view-more-games:hover {
+    background-color: #6ce597; /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Centraliza o botão Ver Mais e Ver Mais Jogos */
+.custom-carousel-container button,
+.custom-carousel-container a {
+    display: block;
+    margin: 15px auto; /* Centraliza os botões abaixo do carrossel */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .custom-carousel {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+        max-height: 390px; /* Inicialmente exibe 2 linhas no celular (195px x 2) */
+    }
+
+    .custom-carousel.expanded {
+        max-height: none; /* Expande completamente no celular */
+    }
+}
+
+</style>
+
 </head>
 <body>
     
@@ -85,166 +204,101 @@
              
     
     <div class="carousel-container">
-        <p style="background-color: #7df7a8; color: #000; border-radius: 16px 0px; padding: 10px 100px; font-weight: bold;">PG Soft</p> 
+        <p style="background-color: #7df7a8; color: #000; border-radius: 16px 0px; padding: 10px 100px; font-weight: bold;">
+          Principais Jogos</p> 
         
-        <a href="/cadastro/">
-        <div class="carousel">
-            
-           <img src="assets/img/img1.png" alt="Slot 1">
-            <img src="assets/img/img2.png" alt="Slot 2">
-            <img src="assets/img/img3.png" alt="Slot 3">
-            <img src="assets/img/img4.png" alt="Slot 4">
-            
-            <!-- Imagens adicionais serão exibidas quando "Ver Mais" for clicado -->
-        </div></a>
-        <div class="expandable-content" id="expandableContent">
-            
-            <a href="/cadastro/">
-            <div class="image-grid">
-                <img src="assets/img/img5.png" alt="Slot 5">
-                <img src="assets/img/img6.png" alt="Slot 6">
-                <img src="assets/img/img7.png" alt="Slot 7">
-                <img src="assets/img/img8.png" alt="Slot 8">
-                <img src="assets/img/img9.png" alt="Slot 9">
-                <img src="assets/img/img10.png" alt="Slot 10">
-                <img src="assets/img/img11.png" alt="Slot 11">
-                <img src="assets/img/img12.png" alt="Slot 12">
-                <img src="assets/img/img13.png" alt="Slot 13">
-                <img src="assets/img/img14.png" alt="Slot 14">
-                <img src="assets/img/pg-soft/img15.png" alt="Slot 15">
-<img src="assets/img/pg-soft/img16.png" alt="Slot 16">
-<img src="assets/img/pg-soft/img17.png" alt="Slot 17">
-<img src="assets/img/pg-soft/img18.png" alt="Slot 18">
-<img src="assets/img/pg-soft/img19.png" alt="Slot 19">
-<img src="assets/img/pg-soft/img20.png" alt="Slot 20">
-<img src="assets/img/pg-soft/img21.png" alt="Slot 21">
-<img src="assets/img/pg-soft/img22.png" alt="Slot 22">
-<img src="assets/img/pg-soft/img23.png" alt="Slot 23">
-<img src="assets/img/pg-soft/img24.png" alt="Slot 24">
-<img src="assets/img/pg-soft/img25.png" alt="Slot 25">
-<img src="assets/img/pg-soft/img26.png" alt="Slot 26">
-<img src="assets/img/pg-soft/img27.png" alt="Slot 27">
-<img src="assets/img/pg-soft/img28.png" alt="Slot 28">
-<img src="assets/img/pg-soft/img29.png" alt="Slot 29">
-<img src="assets/img/pg-soft/img30.png" alt="Slot 30">
-<img src="assets/img/pg-soft/img31.png" alt="Slot 31">
-<img src="assets/img/pg-soft/img32.png" alt="Slot 32">
-<img src="assets/img/pg-soft/img33.png" alt="Slot 33">
-<img src="assets/img/pg-soft/img34.png" alt="Slot 34">
-<img src="assets/img/pg-soft/img35.png" alt="Slot 35">
-<img src="assets/img/pg-soft/img36.png" alt="Slot 36">
-<img src="assets/img/pg-soft/img37.png" alt="Slot 37">
-<img src="assets/img/pg-soft/img38.png" alt="Slot 38">
-<img src="assets/img/pg-soft/img39.png" alt="Slot 39">
-<img src="assets/img/pg-soft/img40.png" alt="Slot 40">
-<img src="assets/img/pg-soft/img41.png" alt="Slot 41">
-<img src="assets/img/pg-soft/img42.png" alt="Slot 42">
-<img src="assets/img/pg-soft/img43.png" alt="Slot 43">
-<img src="assets/img/pg-soft/img44.png" alt="Slot 44">
-<img src="assets/img/pg-soft/img45.png" alt="Slot 45">
-<img src="assets/img/pg-soft/img46.png" alt="Slot 46">
-<img src="assets/img/pg-soft/img47.png" alt="Slot 47">
-<img src="assets/img/pg-soft/img48.png" alt="Slot 48">
-<img src="assets/img/pg-soft/img49.png" alt="Slot 49">
-<img src="assets/img/pg-soft/img50.png" alt="Slot 50">
-<img src="assets/img/pg-soft/img51.png" alt="Slot 51">
-<img src="assets/img/pg-soft/img52.png" alt="Slot 52">
-<img src="assets/img/pg-soft/img53.png" alt="Slot 53">
-<img src="assets/img/pg-soft/img54.png" alt="Slot 54">
-<img src="assets/img/pg-soft/img55.png" alt="Slot 55">
-<img src="assets/img/pg-soft/img56.png" alt="Slot 56">
-<img src="assets/img/pg-soft/img57.png" alt="Slot 57">
-<img src="assets/img/pg-soft/img58.png" alt="Slot 58">
-<img src="assets/img/pg-soft/img59.png" alt="Slot 59">
-<img src="assets/img/pg-soft/img60.png" alt="Slot 60">
-<img src="assets/img/pg-soft/img61.png" alt="Slot 61">
-<img src="assets/img/pg-soft/img62.png" alt="Slot 62">
-<img src="assets/img/pg-soft/img63.png" alt="Slot 63">
-<img src="assets/img/pg-soft/img64.png" alt="Slot 64">
-<img src="assets/img/pg-soft/img65.png" alt="Slot 65">
-<img src="assets/img/pg-soft/img66.png" alt="Slot 66">
-<img src="assets/img/pg-soft/img67.png" alt="Slot 67">
-<img src="assets/img/pg-soft/img68.png" alt="Slot 68">
-<img src="assets/img/pg-soft/img69.png" alt="Slot 69">
-<img src="assets/img/pg-soft/img70.png" alt="Slot 70">
-<img src="assets/img/pg-soft/img71.png" alt="Slot 71">
-<img src="assets/img/pg-soft/img72.png" alt="Slot 72">
-<img src="assets/img/pg-soft/img73.png" alt="Slot 73">
-<img src="assets/img/pg-soft/img74.png" alt="Slot 74">
-<img src="assets/img/pg-soft/img75.png" alt="Slot 75">
-<img src="assets/img/pg-soft/img76.png" alt="Slot 76">
-<img src="assets/img/pg-soft/img77.png" alt="Slot 77">
-<img src="assets/img/pg-soft/img78.png" alt="Slot 78">
-<img src="assets/img/pg-soft/img79.png" alt="Slot 79">
-<img src="assets/img/pg-soft/img80.png" alt="Slot 80">
-<img src="assets/img/pg-soft/img81.png" alt="Slot 81">
-<img src="assets/img/pg-soft/img82.png" alt="Slot 82">
-<img src="assets/img/pg-soft/img83.png" alt="Slot 83">
-<img src="assets/img/pg-soft/img84.png" alt="Slot 84">
-<img src="assets/img/pg-soft/img85.png" alt="Slot 85">
-<img src="assets/img/pg-soft/img86.png" alt="Slot 86">
-<img src="assets/img/pg-soft/img87.png" alt="Slot 87">
-<img src="assets/img/pg-soft/img88.png" alt="Slot 88">
-                <!-- Adicione mais imagens conforme necessário -->
-            </div></a>
-        </div>
-    </div>
-    <div class="show-more" onclick="toggleContent()">Ver Mais</div>
+
+        <div class="custom-carousel-container">
+          <div class="custom-carousel">
+              <!-- Repita para todas as 20 imagens -->
+              <a href="https://slotezybet.com/pt/cassino/games/fortune-tiger/" class="custom-carousel-item">
+                  <picture>
+                      <source srcset="assets/img/webp/img1.webp" type="image/webp">
+                      <img src="assets/img/img1.png" alt="Fortune Tiger">
+                  </picture>
+                  <div class="custom-play-button">Jogar</div>
+              </a>
+
+              <a href="https://slotezybet.com/pt/cassino/games/aviator/" class="custom-carousel-item">
+                <picture>
+                    <source srcset="assets/img/webp/img2.webp" type="image/webp">
+                    <img src="assets/img/img2.png" alt="Aviator">
+                </picture>
+                <div class="custom-play-button">Jogar</div>
+            </a>
+
+            <a href="https://slotezybet.com/pt/cassino/games/big-bass-halloween/" class="custom-carousel-item">
+              <picture>
+                  <source srcset="assets/img/webp/img3.webp" type="image/webp">
+                  <img src="assets/img/img3.png" alt="Big Bass Halloween">
+              </picture>
+              <div class="custom-play-button">Jogar</div>
+          </a>
+
+          <a href="https://slotezybet.com/pt/cassino/games/cash-mania/" class="custom-carousel-item">
+            <picture>
+                <source srcset="assets/img/webp/img4.webp" type="image/webp">
+                <img src="assets/img/img4.png" alt="Cash Mania">
+            </picture>
+            <div class="custom-play-button">Jogar</div>
+        </a>
+
+        <a href="https://slotezybet.com/pt/cassino/games/dragon-hatch/" class="custom-carousel-item">
+          <picture>
+              <source srcset="assets/img/webp/img5.webp" type="image/webp">
+              <img src="assets/img/img5.png" alt="Dragon Hatch">
+          </picture>
+          <div class="custom-play-button">Jogar</div>
+      </a>
+
+      <a href="https://slotezybet.com/pt/cassino/games/dragon-tiger-luck/" class="custom-carousel-item">
+        <picture>
+            <source srcset="assets/img/webp/img6.webp" type="image/webp">
+            <img src="assets/img/img6.png" alt="Dragon Tiger Luck">
+        </picture>
+        <div class="custom-play-button">Jogar</div>
+    </a>
+
+    <a href="https://slotezybet.com/pt/cassino/games/fortune-dragon/" class="custom-carousel-item">
+      <picture>
+          <source srcset="assets/img/webp/img7.webp" type="image/webp">
+          <img src="assets/img/img7.png" alt="Fortune Dragon">
+      </picture>
+      <div class="custom-play-button">Jogar</div>
+  </a>
+
+  <a href="https://slotezybet.com/pt/cassino/games/fortune-mouse/" class="custom-carousel-item">
+    <picture>
+        <source srcset="assets/img/webp/img8.webp" type="image/webp">
+        <img src="assets/img/img8.png" alt="Fortune Mouse">
+    </picture>
+    <div class="custom-play-button">Jogar</div>
+</a>
+
+<a href="https://slotezybet.com/pt/cassino/games/fortune-ox/" class="custom-carousel-item">
+  <picture>
+      <source srcset="assets/img/webp/img9.webp" type="image/webp">
+      <img src="assets/img/img9.png" alt="Fortune Ox">
+  </picture>
+  <div class="custom-play-button">Jogar</div>
+</a>
+
+<a href="https://slotezybet.com/pt/cassino/games/fortune-rabbit/" class="custom-carousel-item">
+  <picture>
+      <source srcset="assets/img/webp/img10.webp" type="image/webp">
+      <img src="assets/img/img10.png" alt="Fortune Rabbit">
+  </picture>
+  <div class="custom-play-button">Jogar</div>
+</a>
+              <!-- Adicione mais 19 imagens aqui -->
+          </div>
+          <button id="custom-show-more">Ver Mais</button>
+          <a id="view-more-games" href="https://slotezybet.com/cadastro/" style="display: none;">Ver Mais Jogos</a>
+      </div>
 
 
-    <div class="carousel-container">
-        <p style="background-color: #7df7a8; color: #000; border-radius: 16px 0px; padding: 10px 100px; font-weight: bold;">
-            
-            Especial
-            </p> 
-        
-        
-        <div class="carousel">
-            
-           <img src="assets/img/especial/img1.png" alt="Slot 1">
-            <img src="assets/img/especial/img2.png" alt="Slot 2">
-            <img src="assets/img/img5.png" alt="Slot 3">
-            <img src="assets/img/especial/img4.png" alt="Slot 4">
-            
-            <!-- Imagens adicionais serão exibidas quando "Ver Mais" for clicado -->
-        </div>
-        
-        
-            <div class="carousel-container">
-        <p style="background-color: #7df7a8; color: #000; border-radius: 16px 0px; padding: 10px 100px; font-weight: bold;">
-            
-            In House
-            </p> 
-        
-        <a href="/cadastro/">
-        <div class="carousel">
-            
-           <img src="assets/img/in-house/img1.png" alt="Slot 1">
-            <img src="assets/img/in-house/img2.png" alt="Slot 2">
-            <img src="assets/img/in-house/img3.png" alt="Slot 3">
-            <img src="assets/img/in-house/img4.png" alt="Slot 4">
-            
-            <!-- Imagens adicionais serão exibidas quando "Ver Mais" for clicado -->
-        </div></a>
-        
-        
-        <div class="carousel-container">
-        <p style="background-color: #7df7a8; color: #000; border-radius: 16px 0px; padding: 10px 100px; font-weight: bold;">
-            
-           BGaming
-            </p> 
-        
-        <a href="/cadastro/">
-        <div class="carousel">
-            
-           <img src="assets/img/bgaming/img1.jpg" alt="Slot 1">
-            <img src="assets/img/bgaming/img2.jpg" alt="Slot 2">
-            <img src="assets/img/bgaming/img3.png" alt="Slot 3">
-            <img src="assets/img/bgaming/img4.png" alt="Slot 4">
-            
-            <!-- Imagens adicionais serão exibidas quando "Ver Mais" for clicado -->
-        </div></a>
-        
+
+
 <div class="artigo">
         <article style="margin:50px 0px;">
             <center>
@@ -422,40 +476,19 @@
         <p><a style="color:#fff;" href="https://slotezybet.com/politica-de-privacidade/">politicica de privacidade</a> | <a style="color:#fff;" href="https://slotezybet.com/termos-e-condicoes/">termos e condi&ccedil;&otilde;es</a> | <a style="color:#fff;" href="https://slotezybet.com/afiliados/">afiliados</a></p>
 </footer>
 
-    <script>
-        function toggleContent() {
-            var content = document.getElementById("expandableContent");
-            var carousel = document.querySelector(".carousel");
-            var showMoreLink = document.querySelector(".show-more");
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-                carousel.classList.add("hidden"); // Oculta o carrossel principal
-                showMoreLink.textContent = "Ver Menos"; // Altera o texto para "Ver Menos"
-            } else {
-                content.style.display = "none";
-                carousel.classList.remove("hidden"); // Exibe o carrossel principal
-                showMoreLink.textContent = "Ver Mais"; // Altera o texto para "Ver Mais"
-            }
-        }
-    </script>
 
+   
 
 <script>
-    function toggleContent1() {
-        var content = document.getElementById("expandableContent1");
-        var carousel = document.querySelector(".carousel");
-        var showMoreLink = document.querySelector(".show-more1");
-        if (content.style.display === "none" || content.style.display === "") {
-            content.style.display = "block";
-            carousel.classList.add("hidden"); // Oculta o carrossel principal
-            showMoreLink.textContent = "Ver Menos"; // Altera o texto para "Ver Menos"
-        } else {
-            content.style.display = "none";
-            carousel.classList.remove("hidden"); // Exibe o carrossel principal
-            showMoreLink.textContent = "Ver Mais"; // Altera o texto para "Ver Mais"
-        }
-    }
-</script>
+  document.getElementById('custom-show-more').addEventListener('click', function() {
+      const carousel = document.querySelector('.custom-carousel');
+      carousel.classList.add('expanded'); // Expande o carrossel completamente
+      this.style.display = 'none'; // Oculta o botão "Ver Mais" após a expansão
+  
+      // Exibe o botão "Ver Mais Jogos" após a expansão
+      document.getElementById('view-more-games').style.display = 'inline-block';
+  });
+  </script>
 
 
 <script>
