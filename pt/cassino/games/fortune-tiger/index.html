@@ -239,6 +239,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
  
 </style>
+
+<link rel="manifest" href="https://slotezybet.com/pt/cassino/games/fortune-tiger/manifest.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+          navigator.serviceWorker.register('https://slotezybet.com/pt/cassino/games/fortune-tiger/service-worker.js').then(function(registration) {
+              console.log('ServiceWorker registrado com sucesso:', registration.scope);
+          }, function(error) {
+              console.log('Falha ao registrar o ServiceWorker:', error);
+          });
+      });
+  }
+</script>
    
 </head>
 <body>
@@ -315,6 +329,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        
         
 <div class="artigo">
+  <h2>Baixar Fortune Tiger</h2>
+  
+  <p>Baixe Já o <strong>Fortune Tiger</strong> em seu dispositivo! Toque no botão abaixo para instalar o aplicativo do Jogo com apenas 2 cliques.</p>
+  <button id="install-button" class="install-buttoncss" style="display: none;">Instalar App</button>
+
+  <script>
+      let deferredPrompt;
+      const installButton = document.getElementById('install-button');
+
+      // Detecta o evento beforeinstallprompt
+      window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          installButton.style.display = 'block'; // Exibe o botão de instalação
+
+          installButton.addEventListener('click', () => {
+              installButton.style.display = 'none'; // Esconde o botão
+              deferredPrompt.prompt(); // Mostra o prompt de instalação
+
+              deferredPrompt.userChoice.then((choiceResult) => {
+                  if (choiceResult.outcome === 'accepted') {
+                      console.log('Usuário aceitou a instalação');
+                  } else {
+                      console.log('Usuário recusou a instalação');
+                  }
+                  deferredPrompt = null;
+              });
+          });
+      });
+
+      // Verifica se o PWA foi instalado
+      window.addEventListener('appinstalled', (evt) => {
+          console.log('PWA foi instalado com sucesso');
+          installButton.style.display = 'none';
+      });
+  </script>
+
+  <!-- Mensagem para usuários de iPhone (Safari) -->
+  <div id="install-message" style="display: none; background: #3498db; color: white; padding: 10px; text-align: center;">
+      Para instalar este aplicativo no seu iPhone, toque no ícone de compartilhar do seu navegador e selecione "Adicionar à Tela de Início".
+  </div>
+
+  <script>
+      const isIos = () => {
+          const userAgent = window.navigator.userAgent.toLowerCase();
+          return /iphone|ipad|ipod/.test(userAgent);
+      };
+
+      const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+      if (isIos() && !isInStandaloneMode()) {
+          document.getElementById('install-message').style.display = 'block';
+      }
+  </script>
         
   <h2>Especifica&ccedil;&otilde;es T&eacute;cnicas do Jogo</h2>
 
@@ -529,13 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>Perguntas Frequentes</h2>
   
   <p>Confira abaixo perguntas frequentes que jogadores novos fazem antes de come&ccedil;ar a jogar fortune tiger o jogo do tigrinho.</p>
-  
-  <h3>&Eacute; Poss&iacute;vel Baixar Fortune Tiger?</h3>
-  
-  <p>Vale lembrar que n&atilde;o &eacute; poss&iacute;vel baixar o <strong>Fortune Tiger</strong> em dispositivos m&oacute;veis ou desktop. O jogo s&oacute; pode ser acessado atrav&eacute;s do navegador, diretamente no site da <strong>Slot Ezybet</strong>.</p>
-  
-  <p>Para explorar mais sobre cassino e casa de aposta, acesse os links internos do site <a href="https://slotezybet.com/">Slot Ezybet - cassino</a> e <a href="https://slotezybet.com/">Slot Ezybet - casa de aposta</a>.</p>
-  
+
   <h3>O que &eacute; o Fortune Tiger?</h3>
   
   <p>O Fortune Tiger &eacute; um jogo de slot online desenvolvido pela PG Soft, uma empresa respeitada no setor de jogos de apostas. No Brasil, ele ficou famoso como o Jogo do Tigrinho, e muitos apostadores est&atilde;o fazendo dinheiro com ele. O jogo tem uma interface simples, gr&aacute;ficos vibrantes e uma mec&acirc;nica que envolve giros de rolos com s&iacute;mbolos. Se voc&ecirc; alinhar os s&iacute;mbolos certos, pode multiplicar sua aposta em at&eacute; 2.500 vezes!</p>

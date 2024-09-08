@@ -1,0 +1,21 @@
+{
+    "name": "Fortune Tiger",
+    "short_name": "Fortune Tiger | Jogo do Tigre",
+    "start_url": "https://slotezybet.com/pt/cassino/games/fortune-tiger/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3498db",
+    "description": "Jogue Fortune Tiger o Jogo do Tigre nessa Plataforma Nova que está Pagando Muito!",
+    "icons": [
+      {
+        "src": "https://slotezybet.com/assets/img/pwa/icon1-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "https://slotezybet.com/assets/img/pwa/icon1-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
