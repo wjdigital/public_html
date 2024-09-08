@@ -236,6 +236,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  
 </style>
 
+
+<script>
+  if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+              console.log('ServiceWorker registrado com sucesso:', registration.scope);
+          }, function(error) {
+              console.log('Falha ao registrar o ServiceWorker:', error);
+          });
+      });
+  }
+</script>
+<link rel="manifest" href="/manifest.json">
+
 </head>
 <body>
 <!-- google tag manager (noscript) -->
@@ -364,6 +378,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <center><a href="/cadastro/">
     <button style="background-color: #7df7a8; color: #1c1c1c;font-size: 16px; padding: 10px 50px; margin: 10px;border-radius:10px;">Avaliar</button>
     </a></center> 
+    <p>Baixe e Instale o Aplicativo da Casa de Aposta.</p>
+    <button id="install-button" style="display: none;">Instalar App</button>
     
 <h2 style="color:#fff;">Avaliações dos Usuários</h2>
 <div class="rating">
@@ -575,5 +591,55 @@ Baseado em <span class="rating-count">86821</span> avaliações
             loadingScreen.classList.add('hidden');
         });
     </script>
+
+<script>
+  let deferredPrompt;
+  const installButton = document.getElementById('install-button');
+
+  // Detecta o evento beforeinstallprompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installButton.style.display = 'block'; // Exibe o botão de instalação
+
+      installButton.addEventListener('click', () => {
+          installButton.style.display = 'none'; // Esconde o botão
+          deferredPrompt.prompt(); // Mostra o prompt de instalação
+
+          deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                  console.log('Usuário aceitou a instalação');
+              } else {
+                  console.log('Usuário recusou a instalação');
+              }
+              deferredPrompt = null;
+          });
+      });
+  });
+
+  // Verifica se o PWA foi instalado
+  window.addEventListener('appinstalled', (evt) => {
+      console.log('PWA foi instalado com sucesso');
+      installButton.style.display = 'none';
+  });
+</script>
+
+<!-- Mensagem para usuários de iPhone (Safari) -->
+<div id="install-message" style="display: none; background: #3498db; color: white; padding: 10px; text-align: center;">
+  Para instalar este aplicativo no seu iPhone, toque no ícone de compartilhar e selecione "Adicionar à Tela de Início".
+</div>
+
+<script>
+  const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+  };
+
+  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+  if (isIos() && !isInStandaloneMode()) {
+      document.getElementById('install-message').style.display = 'block';
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+{
+    "name": "Casa de Aposta - Slot Ezybet",
+    "short_name": "Slot Ezybet",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3498db",
+    "description": "A Casa de Aposta Slot Ezybet é a melhor plataforma de cassino online com slots incríveis e jogabilidade envolvente.",
+    "icons": [
+      {
+        "src": "/assets/img/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/img/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
