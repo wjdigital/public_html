@@ -352,6 +352,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <p>Baixe já o <strong>Fortune Tiger</strong>! Veja se seu dispositivo é compatível.</p>
+  <script>
+    if (isInWebView()) {
+        const installMessage = document.createElement('div');
+        installMessage.style = "background: #f39c12; color: white; padding: 15px; text-align: center;";
+        installMessage.innerHTML = 'Para instalar o aplicativo, copie este link e cole no seu navegador: <br><button class="install-buttoncss" onclick="copyLink()">Copiar Link</button>';
+        document.body.prepend(installMessage);
+    }
+
+    function copyLink() {
+        const link = window.location.href;
+        navigator.clipboard.writeText(link).then(() => {
+            alert('Link copiado! Cole no seu navegador para continuar.');
+        });
+    }
+</script>
   
   <button id="install-button" class="install-buttoncss" style="display: none;"> <b> <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
